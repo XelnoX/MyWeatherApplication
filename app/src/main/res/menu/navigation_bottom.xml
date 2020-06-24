@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/weather_from_coordinates"
+        android:title="@string/coordinates"
+        android:icon="@drawable/ic_android_purple_24dp"/>
+
+    <item
+        android:id="@+id/weather_from_city_name"
+        android:title="@string/city_name"
+        android:icon="@drawable/ic_android_purple_24dp"/>
+
+</menu>
