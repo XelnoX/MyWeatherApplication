@@ -1,14 +1,19 @@
-package com.example.myweatherapplication
+package com.example.myweatherapplication.fragments
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import com.example.myweatherapplication.R
+import com.example.myweatherapplication.models.WeatherResponse
+import com.example.myweatherapplication.retrofit.RetroWeather
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import retrofit2.Call
@@ -16,6 +21,7 @@ import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.util.*
 
 class WeatherFromCityNameFragment : Fragment() {
 
@@ -52,25 +58,31 @@ class WeatherFromCityNameFragment : Fragment() {
         tvPlusInfo = view.findViewById(R.id.tv_plus_info_by_city_name)
 
         btnGetWeather.setOnClickListener {
+            hideKeyboard()
+
             val cityName = etCityName.text.toString()
 
             val retroWeather = retrofit.create(RetroWeather::class.java)
 
-            val call = retroWeather.tryGetWeatherFromCityName(cityName, API_KEY)
+            val locale: Locale = resources.configuration.locales.get(0)
+            Log.d(TAG, locale.toString())
+
+            val call: Call<WeatherResponse> = retroWeather.tryGetWeatherFromCityName(cityName, locale.toString(), API_KEY)
 
             call.enqueue(object : Callback<WeatherResponse> {
                 override fun onFailure(call: Call<WeatherResponse>?, t: Throwable?) {
                     Log.d(TAG, "Failure during getting weather information", t)
                 }
 
+
                 override fun onResponse(call: Call<WeatherResponse>?, response: Response<WeatherResponse>?) {
                     when(response!!.code()){
                         200 -> {
                             val weatherInfo = response.body()
                             tvCityName.text = weatherInfo.name
-                            val tempDescription = "The weather is: ${weatherInfo.weather[0].main}"
+                            val tempDescription = weatherInfo.weather[0].description
                             tvDescription.text = tempDescription
-                            val tempPlusInfo = "The speed of the wind is: ${weatherInfo.wind.speed}"
+                            val tempPlusInfo = "${resources.getString(R.string.the_speed_of_the_wind)} ${weatherInfo.wind.speed} km/h"
                             tvPlusInfo.text = tempPlusInfo
                             Log.d(TAG, "Successfully got the information!")
                         }
@@ -84,4 +96,8 @@ class WeatherFromCityNameFragment : Fragment() {
         return view
     }
 
+    private fun hideKeyboard(){
+        val inputMethodManager = context!!.getSystemService(Context.INPUT_METHOD_SERVICE) as? InputMethodManager
+        inputMethodManager?.hideSoftInputFromWindow(activity!!.currentFocus?.windowToken, 0)
+    }
 }

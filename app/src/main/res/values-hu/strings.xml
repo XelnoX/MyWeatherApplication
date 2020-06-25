@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">MyWeatherApplication</string>
+    <string name="get_weather_information">Mutasd az időjárást</string>
+    <string name="coordinates">Koordináták</string>
+    <string name="city_name">Város neve</string>
+    <string name="hello_blank_fragment">Helló üres fragment-t</string>
+    <string name="get_weather_by_coordinates">Időjárás koordináták alapján</string>
+    <string name="name">Név</string>
+    <string name="description">Leírás</string>
+    <string name="plus_info">Plusz infó</string>
+    <string name="latitude">szélesség</string>
+    <string name="longitude">hosszúság</string>
+    <string name="get_weather_by_city_name">Időjárás egy város neve alapján</string>
+    <string name="cty_name">város neve</string>
+    <string name="the_weather_is">Az időjárás:</string>
+    <string name="the_speed_of_the_wind">A szél szebessége</string>
+    <string name="use_current_location">Jelenlegi helyzet használata</string>
+</resources>

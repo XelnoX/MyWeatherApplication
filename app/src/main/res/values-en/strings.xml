@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">MyWeatherApplication</string>
     <string name="get_weather_information">Get weather information</string>
@@ -15,5 +16,4 @@
     <string name="the_weather_is">The weather is:</string>
     <string name="the_speed_of_the_wind">The speed of the wind is</string>
     <string name="use_current_location">Use current location</string>
-
 </resources>
