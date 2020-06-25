@@ -10,4 +10,6 @@
     <string name="plus_info">Plus info</string>
     <string name="latitude">latitude</string>
     <string name="longitude">longitude</string>
+    <string name="get_weather_by_city_name">Get weather by city name</string>
+    <string name="cty_name">cty name</string>
 </resources>

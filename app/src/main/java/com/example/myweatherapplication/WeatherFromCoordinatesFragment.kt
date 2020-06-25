@@ -59,7 +59,7 @@ class WeatherFromCoordinatesFragment : Fragment() {
 
             val retroWeather = retrofit.create(RetroWeather::class.java)
 
-            val call = retroWeather.tryGetWeather(latitude, longitude, API_KEY)
+            val call = retroWeather.tryGetWeatherFromCoordinates(latitude, longitude, API_KEY)
 
             call.enqueue(object : Callback<WeatherResponse> {
                 override fun onFailure(call: Call<WeatherResponse>?, t: Throwable?) {
