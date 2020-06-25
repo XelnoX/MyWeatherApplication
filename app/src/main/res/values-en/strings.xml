@@ -12,8 +12,12 @@
     <string name="latitude">latitude</string>
     <string name="longitude">longitude</string>
     <string name="get_weather_by_city_name">Get weather by city name</string>
-    <string name="cty_name">cty name</string>
+    <string name="cty_name">the name of the city</string>
     <string name="the_weather_is">The weather is:</string>
     <string name="the_speed_of_the_wind">The speed of the wind is</string>
     <string name="use_current_location">Use current location</string>
+    <string name="try_again">There was some problem during, getting the data, please try again later!</string>
+    <string name="coord_problem">Invalid coordinates!</string>
+    <string name="name_problem">Invalid name, please try again!</string>
+    <string name="no_city_found">No city found</string>
 </resources>

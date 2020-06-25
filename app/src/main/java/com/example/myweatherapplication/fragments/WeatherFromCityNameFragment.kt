@@ -11,6 +11,7 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 import com.example.myweatherapplication.R
 import com.example.myweatherapplication.models.WeatherResponse
 import com.example.myweatherapplication.retrofit.RetroWeather
@@ -72,6 +73,7 @@ class WeatherFromCityNameFragment : Fragment() {
             call.enqueue(object : Callback<WeatherResponse> {
                 override fun onFailure(call: Call<WeatherResponse>?, t: Throwable?) {
                     Log.d(TAG, "Failure during getting weather information", t)
+                    Toast.makeText(context, resources.getString(R.string.try_again), Toast.LENGTH_SHORT).show()
                 }
 
 
@@ -87,6 +89,10 @@ class WeatherFromCityNameFragment : Fragment() {
                             Log.d(TAG, "Successfully got the information!")
                         }
                         else ->{
+                            tvCityName.text = ""
+                            tvDescription.text = ""
+                            tvPlusInfo.text = ""
+                            Toast.makeText(context, resources.getString(R.string.name_problem), Toast.LENGTH_SHORT).show()
                             Log.d(TAG, response.code().toString())
                         }
                     }

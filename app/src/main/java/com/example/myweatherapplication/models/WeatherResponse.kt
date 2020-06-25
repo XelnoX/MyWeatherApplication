@@ -33,8 +33,7 @@ class WeatherResponse{
     val dt: String = ""
 
     @SerializedName("sys")
-    val sys: Sys =
-        Sys()
+    val sys: Sys = Sys()
 
     @SerializedName("timezone")
     val timezone: String = ""
@@ -43,7 +42,7 @@ class WeatherResponse{
     val id: String = ""
 
     @SerializedName("name")
-    val name: String = ""
+    val name: String = " "
 
     @SerializedName("cod")
     val cod: String = ""

@@ -12,8 +12,12 @@
     <string name="latitude">szélesség</string>
     <string name="longitude">hosszúság</string>
     <string name="get_weather_by_city_name">Időjárás egy város neve alapján</string>
-    <string name="cty_name">város neve</string>
+    <string name="cty_name">a város neve</string>
     <string name="the_weather_is">Az időjárás:</string>
     <string name="the_speed_of_the_wind">A szél szebessége</string>
     <string name="use_current_location">Jelenlegi helyzet használata</string>
+    <string name="try_again">Hiba lépett fel az adatok letöltése közben, kérem próbálja újra később!</string>
+    <string name="coord_problem">Érvénytelen koordináták!</string>
+    <string name="name_problem">Érvénytelen név, kérem próbálja újra!</string>
+    <string name="no_city_found">Nem található város</string>
 </resources>

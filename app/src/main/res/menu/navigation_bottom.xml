@@ -4,11 +4,11 @@
     <item
         android:id="@+id/weather_from_coordinates"
         android:title="@string/coordinates"
-        android:icon="@drawable/ic_android_purple_24dp"/>
+        android:icon="@drawable/ic_my_location_black_24dp"/>
 
     <item
         android:id="@+id/weather_from_city_name"
         android:title="@string/city_name"
-        android:icon="@drawable/ic_android_purple_24dp"/>
+        android:icon="@drawable/ic_location_city_black_24dp"/>
 
 </menu>

@@ -16,6 +16,7 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat.getSystemService
 import com.example.myweatherapplication.R
@@ -90,13 +91,18 @@ class WeatherFromCoordinatesFragment : Fragment(), LocationListener {
             call.enqueue(object : Callback<WeatherResponse> {
                 override fun onFailure(call: Call<WeatherResponse>?, t: Throwable?) {
                     Log.d(TAG, "Failure during getting weather information", t)
+                    Toast.makeText(context, resources.getString(R.string.try_again), Toast.LENGTH_SHORT).show()
                 }
 
                 override fun onResponse(call: Call<WeatherResponse>?, response: Response<WeatherResponse>?) {
                     when(response!!.code()){
                         200 -> {
                             val weatherInfo = response.body()
-                            tvCityName.text = weatherInfo.name
+                            if(weatherInfo.name == ""){
+                                tvCityName.text = resources.getString(R.string.no_city_found)
+                            }else{
+                                tvCityName.text = weatherInfo.name
+                            }
                             val tempDescription = weatherInfo.weather[0].description
                             tvDescription.text = tempDescription
                             val tempPlusInfo = "${resources.getString(R.string.the_speed_of_the_wind)} ${weatherInfo.wind.speed} km/h"
@@ -104,6 +110,10 @@ class WeatherFromCoordinatesFragment : Fragment(), LocationListener {
                             Log.d(TAG, "Successfully got the information!")
                         }
                         else ->{
+                            tvCityName.text = ""
+                            tvDescription.text = ""
+                            tvPlusInfo.text = ""
+                            Toast.makeText(context, resources.getString(R.string.coord_problem), Toast.LENGTH_SHORT).show()
                             Log.d(TAG, response.code().toString())
                         }
                     }
@@ -126,18 +136,6 @@ class WeatherFromCoordinatesFragment : Fragment(), LocationListener {
             Log.d(TAG, location.latitude.toString())
             etLongitude.setText(location.longitude.toString())
             Log.d(TAG, location.longitude.toString())
-
-                    /*fusedLocationClient.lastLocation.addOnSuccessListener(activity as Activity) { location ->
-                    if(location != null){
-                        etLatitude.setText(location.latitude.toString())
-                        Log.d(TAG, location.latitude.toString())
-                        etLongitude.setText(location.longitude.toString())
-                        Log.d(TAG, location.longitude.toString())
-                    }else{
-                        Log.d(TAG, "Location is null")
-                    }
-                }*/
-
         }
         return view
     }
